@@ -1,0 +1,67 @@
+/* Contact — professional, accessible layout */
+/* Inherits color tokens from assets/Styles.css :root */
+
+.contact__head{margin-bottom:12px}
+.section-title{margin-bottom:.25rem}
+.section-desc{color:var(--muted);max-width:75ch}
+
+/* Layout */
+.contact__grid{
+  display:grid; gap:18px;
+  grid-template-columns: 0.9fr 1.1fr;
+}
+@media (max-width:980px){ .contact__grid{ grid-template-columns:1fr } }
+
+/* Info cards (left) */
+.info-card{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  box-shadow:var(--shadow);padding:16px;
+}
+.info-card__title{margin:0 0 .35rem;font-size:1.05rem}
+.info{margin:0}
+.info div{display:flex;gap:.5rem;margin:.25rem 0}
+.info dt{min-width:110px;color:var(--muted)}
+.info dd{margin:0}
+.info-card--privacy{background:#f7fafc;border-style:dashed}
+
+/* Map */
+.map-frame{margin:.5rem 0 0}
+.map-frame iframe{
+  width:100%;height:240px;border:1px solid var(--border);
+  border-radius:12px;background:#fff
+}
+.quick-links{margin:.35rem 0 0}
+
+/* Form (right) */
+.contact__form-wrap{
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  box-shadow:var(--shadow);padding:16px
+}
+.hint{margin:.2rem 0 .6rem}
+.contact-form{display:grid;gap:12px}
+.field{display:grid;gap:.35rem}
+.field label{font-weight:700}
+.input{
+  appearance:none;background:#fff;border:1px solid var(--border);
+  border-radius:10px;padding:.65rem .75rem;line-height:1.4;
+  box-shadow:0 1px 0 rgba(15,23,42,.02) inset;
+}
+.input:focus{outline:3px solid var(--ring);outline-offset:2px}
+textarea.input{resize:vertical;min-height:140px}
+
+/* Honeypot (hidden from sighted users) */
+.hp{position:absolute;left:-9999px;top:auto;height:0;overflow:hidden}
+
+/* Actions */
+.actions{display:flex;gap:10px;align-items:center;margin-top:.25rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;background:var(--brand);
+  color:var(--brand-ink);padding:.7rem 1rem;border-radius:999px;font-weight:700;
+  border:2px solid transparent;transition:transform .08s ease, box-shadow .2s
+}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn--ghost{background:#fff;color:var(--text);border-color:var(--border)}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}

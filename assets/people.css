@@ -1,0 +1,109 @@
+/* =========================================================
+   CE-CaRD — People page (scoped)
+   Inherits design tokens from styles.css / assets/Styles.css
+   ========================================================= */
+
+/* ---------- Header block ---------- */
+.people__header{margin-bottom:12px}
+.section-title{margin-bottom:.25rem}
+.section-desc{color:var(--text-dim, var(--muted, #5b6572));max-width:75ch}
+
+/* ---------- Jump chips (Theme leads / Team) ---------- */
+.people__nav{
+  display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 18px
+}
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--bg-2, #f7fafc); color:var(--text-main, var(--text, #111));
+  border:1px solid var(--border, #e6edf3); border-radius:999px;
+  padding:.45rem .75rem; font-weight:700; font-size:.92rem;
+  box-shadow:var(--shadow, 0 10px 24px rgba(15,23,42,.06));
+  transition:transform .08s ease, box-shadow .2s, border-color .2s
+}
+.chip:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(15,23,42,.12)}
+.chip:focus-visible{outline:3px solid var(--ring, rgba(0,107,74,.25));outline-offset:2px}
+.people .brand-badge { display: none; }
+/* Active chip when the section is targeted (no JS) */
+:target ~ .cards-grid, :target + .cards-grid { /* keep flow stable */ }
+:target ~ .people__nav a[href^="#"], :target + .people__nav a[href^="#"] { /* noop */ }
+:target, .people__subtitle:target { scroll-margin-top:84px; } /* avoid hiding under sticky header */
+:target ~ .people__nav a[href="#leads"],
+:target ~ .people__nav a[href="#team"] { /* reset all first */ }
+
+#leads:target ~ .cards-grid,
+#team:target ~ .cards-grid { /* layout unaffected */ }
+#leads:target ~ .people__nav a[href="#leads"],
+#team:target  ~ .people__nav a[href="#team"]{
+  background:var(--accent, #006b4a);
+  color:var(--accent-ink, #fff);
+  border-color:transparent;
+}
+
+/* ---------- Subtitles ---------- */
+.people__subtitle{
+  margin-top:14px;margin-bottom:.5rem;font-weight:900
+}
+
+/* ---------- Grid ---------- */
+.cards-grid{
+  display:grid; gap:14px;
+  grid-template-columns:repeat(3,1fr)
+}
+@media (max-width:1100px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.cards-grid{grid-template-columns:1fr}}
+
+/* ---------- Person card ---------- */
+.person{
+  display:grid; grid-template-columns:92px 1fr; gap:14px;
+  background:#fff; border:1px solid var(--border, #e6edf3); border-radius:14px;
+  box-shadow:var(--shadow, 0 10px 24px rgba(15,23,42,.06));
+  padding:16px;
+  transition:transform .08s ease, box-shadow .2s, border-color .2s
+}
+.person:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(15,23,42,.12);
+  border-color:#dbe7f1
+}
+
+.person__photo{
+  width:92px;height:92px;border-radius:14px;object-fit:cover;
+  border:1px solid var(--border, #e6edf3); background:#fff
+}
+.person__head{margin-top:2px}
+.person__name{margin:0 0 .05rem;font-size:1.08rem}
+.person__role{margin:0;color:var(--text-dim, var(--muted, #5b6572))}
+
+.person__bio{margin:.45rem 0 .45rem;color:var(--text-main, #111)}
+.person__badges{
+  display:flex;flex-wrap:wrap;gap:8px;margin:0 0 .35rem;padding:0;list-style:none
+}
+.person__badges li{
+  background:#eef2ff;color:#312e81;border:1px solid #c7d2fe;
+  padding:.22rem .55rem;border-radius:999px;font-weight:800;font-size:.82rem
+}
+.person__bullets{margin:.15rem 0 .5rem;padding-left:1.1rem}
+.person__bullets li{margin:.24rem 0}
+
+.person__links{
+  display:flex;flex-wrap:wrap;gap:10px;margin:0
+}
+.person__links a{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:#fff;border:1px solid var(--border, #e6edf3);
+  border-radius:999px;padding:.32rem .6rem;font-weight:700;
+  color:var(--text-main, #111)
+}
+.person__links a:hover{border-color:#dbe7f1;box-shadow:var(--shadow, 0 10px 24px rgba(15,23,42,.06))}
+.person__links a:focus-visible{outline:3px solid var(--ring, rgba(0,107,74,.25));outline-offset:2px}
+
+/* ---------- Compact on very small screens ---------- */
+@media (max-width:420px){
+  .person{grid-template-columns:72px 1fr}
+  .person__photo{width:72px;height:72px;border-radius:12px}
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}

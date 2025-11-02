@@ -1,0 +1,86 @@
+/* Sectors page — user-friendly cards with collapsible details */
+/* Inherits color tokens from assets/Styles.css :root */
+
+.section-header{margin-bottom:10px}
+.section-title{margin-bottom:.25rem}
+.section-desc{color:var(--muted);max-width:75ch}
+
+/* Quick jump chips */
+.sector-nav{
+  display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px
+}
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--bg-2); color:var(--text);
+  border:1px solid var(--border); border-radius:999px;
+  padding:.45rem .75rem; font-weight:600; box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .2s
+}
+.chip:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(15,23,42,.12)}
+.chip:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+
+/* Grid */
+.sector-grid{
+  display:grid;gap:14px;
+  grid-template-columns:repeat(3,1fr)
+}
+@media (max-width:1100px){.sector-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.sector-grid{grid-template-columns:1fr}}
+
+/* Card */
+.sector-card{
+  position:relative;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .2s, border-color .2s
+}
+.sector-card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,23,42,.12);border-color:#dbe7f1}
+
+/* Make the whole card clickable but keep content selectable */
+.sector-card__link{
+  position:absolute;inset:0;z-index:1;border-radius:inherit
+}
+.sector-card__head{position:relative;z-index:2}
+.sector-card__title{margin:0 0 .35rem;font-size:1.15rem}
+.sector-card__summary{margin:0;color:var(--muted)}
+
+/* Badges */
+.sector-card__meta{
+  display:flex;flex-wrap:wrap;gap:8px;margin:.65rem 0 .25rem;position:relative;z-index:2
+}
+.badge{
+  display:inline-block;font-size:.85rem;font-weight:700;
+  background:#fff;border:1px solid var(--border);
+  border-radius:999px;padding:.25rem .55rem
+}
+
+/* Details (collapsible) */
+.sector-details{position:relative;z-index:2;margin-top:.35rem}
+.sector-details__summary{
+  list-style:none;cursor:pointer;user-select:none;
+  width:fit-content;margin:6px 0 0;padding:.35rem .65rem;border-radius:8px;
+  background:var(--bg-2);border:1px solid var(--border);font-weight:700
+}
+.sector-details__summary::-webkit-details-marker{display:none}
+.sector-details[open] .sector-details__summary{
+  background:#fff;border-color:#dbe7f1;box-shadow:var(--shadow)
+}
+.sector-details__summary:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+
+.sector-details__body{
+  margin-top:.6rem;border-top:1px solid var(--border);padding-top:.6rem
+}
+
+.cols{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+.cols section h3{margin:.1rem 0 .35rem;font-size:1rem}
+.cols section ul{margin:.25rem 0 0 0;padding-left:1.2rem}
+.cols section li{margin:.3rem 0}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}

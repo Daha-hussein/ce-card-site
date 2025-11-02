@@ -1,0 +1,115 @@
+/* =========================================================
+   Partnerships — clean, logo-forward layout
+   (Inherits tokens from global styles.css)
+   ========================================================= */
+
+/* Page header */
+.partner-head { margin-bottom: 10px; }
+.section-title { margin-bottom: .25rem; }
+.section-desc { color: var(--text-dim); max-width: 75ch; }
+
+/* How we collaborate */
+.partner-how { margin-top: 8px; }
+.how-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .4rem 1rem;
+  margin: .4rem 0 1rem;
+  padding-left: 1.2rem;
+}
+@media (max-width: 720px) { .how-list { grid-template-columns: 1fr; } }
+
+/* University & institute logos */
+.partner-logos { margin-top: 8px; }
+.logo-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: .6rem;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+@media (max-width: 1000px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .logo-grid { grid-template-columns: 1fr; } }
+
+/* Use a dedicated class to avoid the global `.logo img { max-height:62px }` cap */
+.partner-logo {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  min-height: 180px;
+  box-shadow: var(--shadow);
+  transition: transform .08s, box-shadow .2s, border-color .2s;
+}
+.partner-logo:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(15,23,42,.12); }
+
+/* Bigger logos */
+.partner-logo img {
+  max-height: 140px !important;   /* ensure we beat any inherited rule */
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Slightly smaller on tablets */
+@media (max-width: 1000px) {
+  .partner-logo { min-height: 150px; padding: 22px; }
+  .partner-logo img { max-height: 110px !important; }
+}
+
+/* Compact on phones */
+@media (max-width: 560px) {
+  .partner-logo { min-height: 120px; padding: 18px; }
+  .partner-logo img { max-height: 90px !important; }
+}
+
+/* Key collaborators */
+.partner-collab { margin-top: 18px; }
+.collab-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 980px) { .collab-grid { grid-template-columns: 1fr; } }
+
+.collab-card {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform .08s, box-shadow .2s, border-color .2s;
+}
+.collab-card:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(15,23,42,.12); border-color: #dbe7f1; }
+
+.collab-photo { width: 84px; height: 84px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+.collab-name { margin: 0 0 .2rem; font-size: 1.05rem; }
+.collab-text { margin: 0; color: var(--text-dim); }
+
+/* Producer partners */
+.partner-producers { margin-top: 18px; }
+.logo-grid--small { grid-template-columns: 1fr; }
+.producer {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.producer img { max-height: 62px; object-fit: contain; }
+.producer-note { margin: 0; color: var(--text-dim); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,87 @@
+/* Publications & presentations — clean, filterable list
+   Inherits global tokens from assets/Styles.css
+-------------------------------------------------------- */
+
+:root { /* anchor offset so section titles aren’t hidden by sticky header */
+  scroll-margin-top: 86px;
+}
+
+.pubs-header{margin-bottom:10px}
+.section-title{margin-bottom:.25rem}
+.section-desc{color:var(--text-dim);max-width:75ch}
+
+/* Filters (CSS-only) */
+.pubs-filters{
+  display:flex;flex-wrap:wrap;gap:16px;margin:12px 0 16px
+}
+.filter-group{border:none;margin:0;padding:0}
+.filter-label{font-weight:800;margin-right:8px}
+.filter-group input{position:absolute;left:-9999px}
+
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#f7fafc; color:var(--text-main);
+  border:1px solid var(--border); border-radius:999px;
+  padding:.45rem .75rem; font-weight:700; font-size:.92rem;
+  box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .2s, border-color .2s
+}
+input:checked + .chip{
+  background:#fff;border-color:#dbe7f1;box-shadow:0 12px 28px rgba(15,23,42,.12)
+}
+.chip:hover{transform:translateY(-1px)}
+.chip:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+
+/* List */
+.pubs-list{
+  list-style:none;padding:0;margin:10px 0 0;
+  display:grid;gap:14px
+}
+.pub-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:18px;box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .2s, border-color .2s
+}
+.pub-card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,23,42,.12);border-color:#dbe7f1}
+
+.pub-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+.pub-title{margin:0;flex:1;font-size:1.12rem}
+.pub-meta{margin:.25rem 0 .35rem;color:var(--text-dim)}
+
+.badge{
+  display:inline-block;white-space:nowrap;
+  background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0;
+  padding:.2rem .5rem;border-radius:999px;font-weight:800;font-size:.8rem
+}
+.badge--type{background:#ecfeff;color:#134e4a;border-color:#a5f3fc}
+.badge--year{background:#eef2ff;color:#312e81;border-color:#c7d2fe}
+
+/* Details */
+.pub-details summary{
+  list-style:none;cursor:pointer;user-select:none;width:fit-content;
+  margin:6px 0 0;padding:.35rem .65rem;border-radius:8px;
+  background:#f7fafc;border:1px solid var(--border);font-weight:700
+}
+.pub-details summary::-webkit-details-marker{display:none}
+.pub-details[open] summary{
+  background:#fff;border-color:#dbe7f1;box-shadow:var(--shadow)
+}
+.pub-abstract{margin:.6rem 0 0}
+
+/* -------- CSS-only filter logic -------- */
+/* Year filter */
+.pubs-list .pub-card{display:block}
+#year-2025:checked ~ .pubs-list .pub-card:not([data-year="2025"]){display:none}
+#year-2024:checked ~ .pubs-list .pub-card:not([data-year="2024"]){display:none}
+#year-2023:checked ~ .pubs-list .pub-card:not([data-year="2023"]){display:none}
+#year-2022:checked ~ .pubs-list .pub-card:not([data-year="2022"]){display:none}
+#year-2020:checked ~ .pubs-list .pub-card:not([data-year="2020"]){display:none}
+
+/* Type filter — stacks with year (AND logic) */
+#type-article:checked ~ .pubs-list .pub-card:not([data-type="article"]){display:none}
+#type-preprint:checked ~ .pubs-list .pub-card:not([data-type="preprint"]){display:none}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}
