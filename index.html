@@ -8,7 +8,7 @@
   <!-- Site-wide layout / header / footer -->
   <link rel="stylesheet" href="styles.css" />
   <!-- Home-section styles (hero, stats, cards, gallery etc.) -->
-  <link rel="stylesheet" href="assets/Styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
 
   <meta name="description" content="CE-CaRD at SNU advances camel genetics, milk quality & safety, health, welfare, and climate-smart rangelands through research, training, and partnerships in Somalia." />
 </head>
@@ -17,7 +17,7 @@
   <!-- Sticky site header with full navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="Home.html">
+      <a class="brand" href="index.html">
         <img src="images/faculty_logo.jpg" alt="Somali National University — CE-CaRD" class="logo" />
         <span class="brand-text">
           <span class="brand-name">CE-CaRD</span>
@@ -62,7 +62,7 @@
         </div>
 
         <figure class="hero-figure">
-          <!-- Your hero image: tries .png/.jpg/.jpeg/.webp/.svg automatically -->
+          <!-- Tries .png/.jpg/.jpeg/.webp/.svg automatically -->
           <img data-srcbase="images/hero" alt="Camel market scene in Beletweyne, Somalia" loading="eager" decoding="async" />
           <figcaption class="muted">
             <span class="credit">
@@ -78,7 +78,6 @@
     <section class="section" aria-labelledby="impact-title">
       <div class="container">
         <div class="section-head">
-          <!-- Brand badge -->
           <span class="brand-badge">
             <img src="images/faculty_logo.jpg" alt="SNU logo">
             <span class="bb-text">CE-CaRD</span>
@@ -100,15 +99,14 @@
     <section id="sectors" class="section section--alt" aria-labelledby="sectors-title">
       <div class="container">
         <div class="section-head">
-          <!-- Brand badge -->
           <span class="brand-badge">
             <img src="images/faculty_logo.jpg" alt="SNU logo">
             <span class="bb-text">CE-CaRD</span>
             <span class="bb-sub">Somali National University</span>
           </span>
 
-          <h2 id="sectors-title" class="h2 section-title">What we do</h2>
-          <p class="section-desc muted">Six focus areas for safe milk, healthy herds, resilient rangelands, and fair livelihoods.</p>
+        <h2 id="sectors-title" class="h2 section-title">What we do</h2>
+        <p class="section-desc muted">Six focus areas for safe milk, healthy herds, resilient rangelands, and fair livelihoods.</p>
         </div>
 
         <div class="cards">
@@ -126,7 +124,6 @@
     <section id="projects" class="section" aria-labelledby="highlights-title">
       <div class="container">
         <div class="section-head">
-          <!-- Brand badge -->
           <span class="brand-badge">
             <img src="images/faculty_logo.jpg" alt="SNU logo">
             <span class="bb-text">CE-CaRD</span>
@@ -151,7 +148,6 @@
     <section id="partners" class="section" aria-labelledby="partners-title">
       <div class="container">
         <div class="section-head">
-          <!-- Brand badge -->
           <span class="brand-badge">
             <img src="images/faculty_logo.jpg" alt="SNU logo">
             <span class="bb-text">CE-CaRD</span>
@@ -176,7 +172,6 @@
     <section class="section section--alt" id="gallery" aria-labelledby="gallery-title">
       <div class="container">
         <div class="section-head">
-          <!-- Brand badge -->
           <span class="brand-badge">
             <img src="images/faculty_logo.jpg" alt="SNU logo">
             <span class="bb-text">CE-CaRD</span>
@@ -233,7 +228,6 @@
     <!-- ===== CTA ===== -->
     <section class="callout" aria-labelledby="contact-title">
       <div class="container callout__inner">
-        <!-- Brand badge -->
         <span class="brand-badge" style="margin-bottom:.25rem">
           <img src="images/faculty_logo.jpg" alt="SNU logo">
           <span class="bb-text">CE-CaRD</span>
@@ -272,10 +266,9 @@
 
   <!-- Mark current page in nav -->
   <script>
-    const here = location.pathname.split('/').pop() || 'Home.html';
+    const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.main-nav a').forEach(a => {
-      const href = a.getAttribute('href');
-      if (href === here) a.setAttribute('aria-current','page');
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current','page');
     });
   </script>
 
@@ -287,7 +280,7 @@
       const base = img.getAttribute('data-srcbase');
       let i = 0;
       (function tryNext(){
-        if(i >= exts.length) return;      // stop silently if none found
+        if(i >= exts.length) return;
         const url = base + exts[i++];
         const t = new Image();
         t.onload  = () => { img.src = url; };
